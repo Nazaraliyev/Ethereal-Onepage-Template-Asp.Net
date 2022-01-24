@@ -26,8 +26,22 @@ using Ethereal_Onepage_Template_Asp.Net.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "N:\Codes\Back\Ethereal-Onepage-Template-Asp.Net\Ethereal-Onepage-Template-Asp.Net\Areas\admin\Views\_ViewImports.cshtml"
+using Ethereal_Onepage_Template_Asp.Net.ViewModel;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "N:\Codes\Back\Ethereal-Onepage-Template-Asp.Net\Ethereal-Onepage-Template-Asp.Net\Areas\admin\Views\_ViewImports.cshtml"
+using Microsoft.AspNetCore.Identity;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d6a5625cc8fb4476f348b0fe9041c550465d8bf9", @"/Areas/admin/Views/Shared/Error.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"c058d847087168793ee746ffa63b7c87ee4063d0", @"/Areas/admin/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"9beb846f6b955bca93462cdcf68ea71c8ff45779", @"/Areas/admin/Views/_ViewImports.cshtml")]
     public class Areas_admin_Views_Shared_Error : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<ErrorViewModel>
     {
         #pragma warning disable 1998
