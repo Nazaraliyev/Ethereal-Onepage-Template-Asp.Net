@@ -1,0 +1,34 @@
+#page-start{
+    background-image: url("/img/background.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+    &::before{
+        content: "";
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(15,5,20,0.84);
+        position: absolute;
+        z-index: 0;
+    }
+    div{
+        padding: 280px 0;
+        position: relative;
+        z-index: 1;
+    }
+
+    h1{
+        font-family: $secondary-font;
+        font-size: 50px;
+        color: #fff;
+        span{
+            color: red;
+            font-family: $secondary-font;
+        }
+    }
+
+    p{
+        color: #fff;
+    }
+}

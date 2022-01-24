@@ -1,0 +1,9 @@
+#our-work{
+    background-color: #FAF4FA;
+    button{
+        background-color: red;
+        &:hover{
+            color: #fff;
+        }
+    }
+}

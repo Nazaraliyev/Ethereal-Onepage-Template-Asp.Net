@@ -1,0 +1,361 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+.my-container {
+  width: 60%;
+  margin: 0 auto;
+}
+
+a, div, p, ul, li {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+section {
+  padding: 50px 0;
+}
+
+h2 {
+  font-family: "Oleo Script Swash Caps", cursive;
+  font-size: 2rem;
+  text-align: center;
+  position: relative;
+}
+
+h2:after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 2px;
+  background-color: red;
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.my-btn {
+  margin-top: 40px;
+  padding: 10px 30px;
+  border-radius: 30px;
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-weight: 300;
+}
+
+.my-btn:hover {
+  background-color: #fff;
+  color: black;
+}
+
+header {
+  background-color: #443344;
+  color: #fff;
+}
+
+header #logo {
+  font-family: "Oleo Script Swash Caps", cursive;
+  font-size: 1.6rem;
+}
+
+header #logo:hover {
+  color: red;
+}
+
+header ul li {
+  font-weight: 300;
+  padding: 15px 15px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+header ul li a {
+  color: #fff;
+}
+
+header ul li:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-bottom: 2px solid red;
+}
+
+header ul li:hover a {
+  color: #fff;
+}
+
+header ul .active {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-bottom: 2px solid red;
+}
+
+#page-start {
+  background-image: url("../img/background.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+}
+
+#page-start::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(15, 5, 20, 0.84);
+  position: absolute;
+  z-index: 0;
+}
+
+#page-start div {
+  padding: 280px 0;
+  position: relative;
+  z-index: 1;
+}
+
+#page-start h1 {
+  font-family: "Oleo Script Swash Caps", cursive;
+  font-size: 50px;
+  color: #fff;
+}
+
+#page-start h1 span {
+  color: red;
+  font-family: "Oleo Script Swash Caps", cursive;
+}
+
+#page-start p {
+  color: #fff;
+}
+
+#services {
+  padding: 100px 0;
+}
+
+#services h5 {
+  font-family: "Oleo Script Swash Caps", cursive;
+}
+
+#services p {
+  font-size: .9rem;
+  font-weight: 500;
+}
+
+#services i {
+  color: red;
+  font-weight: 300;
+  font-size: 2rem;
+}
+
+#our-work {
+  background-color: #FAF4FA;
+}
+
+#our-work button {
+  background-color: red;
+}
+
+#our-work button:hover {
+  color: #fff;
+}
+
+#testimonal h2 {
+  margin-bottom: 50px;
+}
+
+#testimonal .owl-carousel {
+  background-color: #FAF4FA;
+  border-radius: 10px;
+  padding: 30px;
+}
+
+#testimonal .owl-carousel i {
+  margin: 10px;
+}
+
+#testimonal .owl-carousel p {
+  font-weight: 300;
+}
+
+#testimonal .owl-carousel .owl-dot span {
+  background-color: rgba(255, 0, 0, 0.397);
+}
+
+#testimonal .owl-carousel .active span {
+  background-color: red;
+}
+
+#testimonal .owl-carousel .testimonal-profile {
+  margin: 30px 0;
+}
+
+#testimonal .owl-carousel .testimonal-profile img {
+  border: 2px solid #443344;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  padding: 2px;
+}
+
+#testimonal .owl-carousel .testimonal-profile h6 {
+  margin-left: 10px;
+}
+
+#subscribe {
+  background-image: url("../img/background.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  position: relative;
+  color: #fff;
+}
+
+#subscribe::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(15, 5, 20, 0.84);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+#subscribe h2 {
+  text-align: left;
+  z-index: 1;
+  display: inline-block;
+  margin-bottom: 50px;
+}
+
+#subscribe h2:after {
+  width: 100%;
+}
+
+#subscribe p {
+  position: relative;
+  z-index: 1;
+  font-weight: 300;
+}
+
+#subscribe button {
+  position: relative;
+  z-index: 1;
+  background-color: red;
+  margin: 0;
+  padding: 10px 40px;
+}
+
+#about h2 {
+  margin-bottom: 50px;
+}
+
+#about p {
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+#about h6 {
+  font-size: .9rem;
+}
+
+#about span {
+  font-size: 3rem;
+  font-weight: 300;
+  color: red;
+}
+
+#contact {
+  background-color: #f7f7f7;
+}
+
+#contact h2 {
+  margin-bottom: 150px;
+}
+
+#contact form {
+  padding-right: 50px;
+}
+
+#contact form input,
+#contact form textarea {
+  border: none;
+  border-bottom: 2px solid red;
+  font-weight: 300;
+  background-color: transparent;
+  outline: none;
+}
+
+#contact form textarea {
+  min-height: 150px;
+  margin-top: 20px;
+}
+
+#contact button {
+  background-color: red;
+}
+
+#contact .my-container > .row > .col-5 {
+  padding: 0 100px;
+}
+
+#contact .my-container > .row > .col-5 h5 {
+  color: red;
+  font-family: "Oleo Script Swash Caps", cursive;
+  font-size: 1.5rem;
+}
+
+#contact .my-container > .row > .col-5 p {
+  width: 75%;
+  margin-bottom: 20px;
+}
+
+#contact .my-container > .row > .col-5 ul li {
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+#contact .my-container > .row > .col-5 ul li i {
+  color: red;
+  font-weight: 300;
+  margin-right: 10px;
+}
+
+footer {
+  margin: 50px 0;
+}
+
+footer p span, footer p i {
+  color: red;
+  font-weight: bold;
+}
+
+footer p span {
+  margin-left: 5px;
+}
+
+footer ul li {
+  width: 40px;
+  height: 40px;
+  border-radius: 25px;
+  background-color: black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #fff;
+  margin: 0 10px;
+}
+/*# sourceMappingURL=style.css.map */

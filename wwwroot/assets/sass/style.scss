@@ -1,0 +1,81 @@
+$primary-color : #443344;
+
+
+
+$primary-font : 'Open Sans', sans-serif;
+$secondary-font : 'Oleo Script Swash Caps', cursive;
+
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    font-family: $primary-font;
+}
+
+
+.my-container{
+    width: 60%;
+    margin: 0 auto;
+}
+
+
+a, div, p, ul, li{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+section{
+    padding: 50px 0;
+}
+
+h2{
+    font-family: $secondary-font;
+    font-size: 2rem;
+    text-align: center;
+    position: relative;
+    &:after{
+        content: "";
+        display: block;
+        width: 40px;
+        height: 2px;
+        background-color: red;
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%)
+
+    }
+}
+
+.my-btn{
+    margin-top: 40px;
+    padding: 10px 30px;
+    border-radius: 30px;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-weight: 300;
+    &:hover{
+        background-color: #fff;
+        color: black;
+    }
+}
+
+
+
+
+@import "nav";
+@import "page-start";
+@import "services";
+@import "our-work";
+@import "testimonal";
+@import "subscribe";
+@import "about";
+@import "contact";
+@import "footer";
+
+
+

@@ -1,0 +1,50 @@
+#contact {
+  background-color: #f7f7f7;
+  h2 {
+    margin-bottom: 150px;
+  }
+  form {
+    padding-right: 50px;
+    input,
+    textarea {
+      border: none;
+      border-bottom: 2px solid red;
+      font-weight: 300;
+      background-color: transparent;
+      outline: none;
+    }
+    textarea {
+      min-height: 150px;
+      margin-top: 20px;
+    }
+  }
+
+  button{
+      background-color: red;
+  }
+
+  .my-container > .row > .col-5 {
+    padding: 0 100px;
+    h5 {
+      color: red;
+      font-family: $secondary-font;
+      font-size: 1.5rem;
+    }
+    p{
+        width: 75%;
+        margin-bottom: 20px;
+    }
+
+    ul{
+        li{
+            font-size: 1rem;
+            font-weight: 300;
+            i{
+                color: red;
+                font-weight: 300;
+                margin-right: 10px;
+            }
+        }
+    }
+  }
+}
