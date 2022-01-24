@@ -1,4 +1,4 @@
-﻿
+﻿2
 @{
     ViewData["Title"] = "Index";
 }
@@ -28,8 +28,8 @@
 						<th scope="row">@i</th>
 						<td class = "w-50">@role.Name</td>
 						<td>
-							<a asp-area = "admin" asp-controller = "account" asp-action = "update" asp-route-id = "@role.Id" class = "btn btn-warning">Update</a>
-							<a asp-area = "admin" asp-controller = "account" asp-action = "delete" asp-route-id = "@role.Id" class = "btn btn-danger" onclick = "return confirm('Are you Sure ?')">Delete</a>
+							<a asp-area = "admin" asp-controller = "role" asp-action = "update" asp-route-id = "@role.Id" class = "btn btn-warning">Update</a>
+							<a asp-area = "admin" asp-controller = "role" asp-action = "delete" asp-route-id = "@role.Id" class = "btn btn-danger" onclick = "return confirm('Are you Sure ?')">Delete</a>
 						</td>
 					</tr>
 					i++;
