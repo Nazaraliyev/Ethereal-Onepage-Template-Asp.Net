@@ -16,12 +16,14 @@ namespace Ethereal_Onepage_Template_Asp.Net.Areas.admin.Controllers
         private readonly AppDbContext _context;
         private readonly UserManager<CustomUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly SignInManager<CustomUser> _signInManager;
 
-        public AccountController(AppDbContext context, UserManager<CustomUser> userManager, RoleManager<IdentityRole> roleManager)
+        public AccountController(AppDbContext context, UserManager<CustomUser> userManager, RoleManager<IdentityRole> roleManager, SignInManager<CustomUser> signInManager)
         {
             _context = context;
             _userManager = userManager;
             _roleManager = roleManager;
+            _signInManager = signInManager;
         }
 
 
@@ -247,6 +249,45 @@ namespace Ethereal_Onepage_Template_Asp.Net.Areas.admin.Controllers
         }
 
 
+        public async  Task<IActionResult> Reset (string Id)
+        {
+            if(Id == null)
+            {
+                return NotFound();
+            }
+
+            if(!await _userManager.Users.AnyAsync(u => u.Id.Equals(Id))){
+                return NotFound();
+            }
+
+
+            VmUserReset model = new VmUserReset()
+            {
+                Id = Id,
+            };
+            return View(model);
+        }
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> Reset(VmUserReset model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            CustomUser user = await _userManager.FindByIdAsync(model.Id);
+            string newPassword = _userManager.PasswordHasher.HashPassword(user,model.Password);
+            user.PasswordHash = newPassword;
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
+
+        }
+
+
+
+
         public async Task<IActionResult> DeleteAsync(string Id)
         {
             if (Id == null)
@@ -284,6 +325,24 @@ namespace Ethereal_Onepage_Template_Asp.Net.Areas.admin.Controllers
 
         public IActionResult Login()
         {
+            return View();
+        }
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> Login(VmLogin model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
     }

@@ -1,0 +1,19 @@
+﻿@model VmUserReset
+
+
+<div class='container-fluid'>
+	<h2 class="mb-5">Reset User Password</h2>
+	<form class="w-50" asp-area="admin" asp-controller="account" asp-action="reset" method="post">
+		<div asp-validation-summary = "All" class = "text-danger"></div>
+		<div class="mb-3">
+			<label asp-for="@Model.Password" class="form-label">Password</label>
+			<input type = "password" class="form-control" asp-for="@Model.Password">
+		</div>		
+		<div class="mb-3">
+			<label asp-for="@Model.CoPassword" class="form-label">Confirm Password</label>
+			<input type = "password" class="form-control" asp-for="@Model.CoPassword">
+		</div>
+		<input asp-for = "@Model.Id"  hidden/>
+		<button class="btn btn-primary" type="submit">Create</button> <a asp-area="admin" asp-controller="role" asp-action="index" class="ml-3 text-danger">Go Back</a>
+	</form>
+</div>
