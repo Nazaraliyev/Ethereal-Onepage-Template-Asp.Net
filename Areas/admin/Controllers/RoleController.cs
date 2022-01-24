@@ -79,5 +79,21 @@ namespace Ethereal_Onepage_Template_Asp.Net.Areas.admin.Controllers
             await _roleManager.UpdateAsync(model);
             return RedirectToAction(nameof(Index));
         }
+
+
+        public async Task<IActionResult> Delete(string Id)
+        {
+            if (Id == null)
+            {
+                return NotFound();
+            }
+            if (await _roleManager.FindByIdAsync(Id) == null)
+            {
+                return NotFound();
+            }
+
+            await _roleManager.DeleteAsync(await _roleManager.FindByIdAsync(Id));
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
