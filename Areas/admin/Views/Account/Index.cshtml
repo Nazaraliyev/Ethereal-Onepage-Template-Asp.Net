@@ -12,6 +12,7 @@
 		<thead>
 			<tr>
 				<th scope="col">#</th>
+				<th scope="col">Profile</th>
 				<th scope="col">Name</th>
 				<th scope="col">Surname</th>
 				<th scope="col">Email</th>
@@ -50,9 +51,9 @@
 							}
 						</td>
 						<td>
-							<a asp-area="admin" asp-controller="account" asp-action="update" asp-route-id="@user.Id" class="btn btn-warning">Update</a>
+							<a asp-area="admin" asp-controller="account" asp-action="update" asp-route-id="@user.Id" class="btn btn-success">Update</a>
+							<a asp-area="admin" asp-controller="account" asp-action="reset" asp-route-id="@user.Id" class="btn btn-warning">Reset</a>
 							<a asp-area="admin" asp-controller="account" asp-action="delete" asp-route-id="@user.Id" class="btn btn-danger" onclick="return confirm('Are you Sure ?')">Delete</a>
-							<a asp-area="admin" asp-controller="account" asp-action="reset" asp-route-id="@user.Id" class="btn btn-danger">Reset</a>
 						</td>
 					</tr>
 					i++;
