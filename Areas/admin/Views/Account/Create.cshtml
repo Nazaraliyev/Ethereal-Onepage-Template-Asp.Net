@@ -1,0 +1,45 @@
+﻿@{
+	ViewData["Title"] = "Create";
+}
+
+@model VmUserRegister
+
+<div class='container-fluid'>
+	<h2 class="mb-3">User Register</h2>
+	<form class="w-50" asp-area="admin" asp-controller="account" asp-action="create" method="post" enctype="multipart/form-data">
+		<div class="mb-3">
+			<label asp-for="@Model.ProfileFile" class="form-label">Profile Image</label>
+			<input class="form-control" asp-for="@Model.ProfileFile">
+		</div>
+
+		<div class="mb-3">
+			<label asp-for="@Model.Name" class="form-label">Name</label>
+			<input class="form-control" asp-for="@Model.Name">
+		</div>
+
+		<div class="mb-3">
+			<label asp-for="@Model.Surname" class="form-label">Surname</label>
+			<input class="form-control" asp-for="@Model.Surname">
+		</div>
+
+		<div class="mb-3">
+			<label asp-for="@Model.Email" class="form-label">Email</label>
+			<input type="email" class="form-control" asp-for="@Model.Email">
+		</div>
+
+		<div class="mb-3">
+			<label asp-for="@Model.Phone" class="form-label">Phone</label>
+			<input type="number" class="form-control" asp-for="@Model.Phone">
+		</div>
+
+		<div class="mb-3">
+			<label asp-for="@Model.Phone" class="form-label">Role</label>
+			<select class="form-selectab-content form-control" asp-for="@Model.RoleId" asp-items="@(new SelectList(Model.role, "Id", "Name"))">
+				<option selected disable>Open this select menu</option>
+			</select>
+		</div>
+
+
+		<button class="btn btn-primary" type="submit">Create</button> <a asp-area="admin" asp-controller="account" asp-action="index" class="ml-3 text-danger">Go Back</a>
+	</form>
+</div>

@@ -33,6 +33,21 @@ namespace Ethereal_Onepage_Template_Asp.Net.Areas.admin.Controllers
             };
             return View(model);
         }
+
+
+        public async Task<IActionResult> Create()
+        {
+            VmUserRegister model = new VmUserRegister()
+            {
+                role = await _roleManager.Roles.ToListAsync()
+            };
+            return View(model);
+        }
+
+        //public IActionResult Create(VmUserRegister model)
+        //{
+           
+        //}
         public IActionResult Login()
         {
             return View();
