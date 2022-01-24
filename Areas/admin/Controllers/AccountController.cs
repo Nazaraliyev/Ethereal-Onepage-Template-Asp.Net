@@ -132,13 +132,22 @@ namespace Ethereal_Onepage_Template_Asp.Net.Areas.admin.Controllers
             }
 
             CustomUser oldUser =await _userManager.FindByIdAsync(Id);
+            IdentityUserRole<string> userROle = await _context.UserRoles.FirstOrDefaultAsync(u => u.UserId == Id);
 
-            VmUserRegister user = new VmUserRegister()
+            VmUserRegister willUpdateUser = new VmUserRegister()
             {
-                
+                Id = oldUser.Id,
+                Name = oldUser.Name,
+                Surname = oldUser.Surname,
+                Email = oldUser.Email,
+                Phone = oldUser.PhoneNumber,
+                RoleId = userROle.RoleId,
+                Secure = oldUser.SecurityStamp,
+                Concurency = oldUser.ConcurrencyStamp
             };
 
-            return View(await _userManager.FindByIdAsync(Id));
+            willUpdateUser.role =await _roleManager.Roles.ToListAsync();
+            return View(willUpdateUser);
         }
 
 

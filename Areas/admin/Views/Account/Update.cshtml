@@ -1,5 +1,5 @@
 ﻿
-@model CustomUser
+@model VmUserRegister
 
 <div class='container-fluid'>
 	<h2 class="mb-3">User Register</h2>
@@ -27,16 +27,19 @@
 
 		<div class="mb-3">
 			<label asp-for="@Model.Phone" class="form-label">Phone</label>
-			<input type="number" class="form-control" asp-for="@Model.ph">
+			<input type="number" class="form-control" asp-for="@Model.Phone">
 		</div>
 
 		<div class="mb-3">
-			<label asp-for="@Model.Phone" class="form-label">Role</label>
+			<label asp-for="@Model.RoleId" class="form-label">Role</label>
 			<select class="form-selectab-content form-control" asp-for="@Model.RoleId" asp-items="@(new SelectList(Model.role, "Id", "Name"))">
 				<option selected disable value = "0">Open this select menu</option>
 			</select>
 		</div>
 
+		<input asp-for = "@Model.Id" hidden />
+		<input asp-for = "@Model.Secure" hidden />
+		<input asp-for = "@Model.Concurency" hidden />
 
 		<button class="btn btn-primary" type="submit">Create</button> <a asp-area="admin" asp-controller="account" asp-action="index" class="ml-3 text-danger">Go Back</a>
 	</form>

@@ -7,6 +7,7 @@ namespace Ethereal_Onepage_Template_Asp.Net.ViewModel
 {
     public class VmUserRegister
     {
+
         [MaxLength(50), Required, MinLength(5)]
         public string Name { get; set; }
 
@@ -29,6 +30,13 @@ namespace Ethereal_Onepage_Template_Asp.Net.ViewModel
         public IFormFile ProfileFile { get; set; }
 
         public string Profile {get; set;}
+
+
+
+        public string Id { get; set; }
+        public string Secure { get; set; }
+        public string Concurency { get; set; }
+
 
 
 
