@@ -3,9 +3,9 @@
 namespace Ethereal_Onepage_Template_Asp.Net.Areas.admin.Controllers
 {
     [Area("admin")]
-    public class AccountController : Controller
+    public class HomeController : Controller
     {
-        public IActionResult Login()
+        public IActionResult Index()
         {
             return View();
         }
