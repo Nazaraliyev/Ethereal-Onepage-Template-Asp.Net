@@ -1,8 +1,5 @@
-﻿@{
-	ViewData["Title"] = "Create";
-}
-
-@model VmUserRegister
+﻿
+@model CustomUser
 
 <div class='container-fluid'>
 	<h2 class="mb-3">User Register</h2>
@@ -30,7 +27,7 @@
 
 		<div class="mb-3">
 			<label asp-for="@Model.Phone" class="form-label">Phone</label>
-			<input type="number" class="form-control" asp-for="@Model.Phone">
+			<input type="number" class="form-control" asp-for="@Model.ph">
 		</div>
 
 		<div class="mb-3">

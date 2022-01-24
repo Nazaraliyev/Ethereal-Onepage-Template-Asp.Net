@@ -28,6 +28,8 @@ namespace Ethereal_Onepage_Template_Asp.Net.ViewModel
 
         public IFormFile ProfileFile { get; set; }
 
+        public string Profile {get; set;}
+
 
 
         public List<IdentityRole> role { get; set; }
