@@ -6,7 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\area\admin\img\profile\" />
     <Folder Include="wwwroot\assets\" />
   </ItemGroup>
 

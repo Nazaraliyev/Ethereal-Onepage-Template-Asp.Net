@@ -83,7 +83,7 @@ namespace Ethereal_Onepage_Template_Asp.Net.Areas.admin.Controllers
                 }
             }
 
-            if(model.RoleId == "0")
+            if (model.RoleId == "0")
             {
                 ModelState.AddModelError("", "Role is required");
                 return View(model);
@@ -99,7 +99,7 @@ namespace Ethereal_Onepage_Template_Asp.Net.Areas.admin.Controllers
                 Profile = model.Profile
             };
 
-            var result  = await _userManager.CreateAsync(user, model.Password);
+            var result = await _userManager.CreateAsync(user, model.Password);
             if (!result.Succeeded)
             {
                 return View(model);
@@ -121,17 +121,17 @@ namespace Ethereal_Onepage_Template_Asp.Net.Areas.admin.Controllers
 
         public async Task<IActionResult> Update(string Id)
         {
-            if(Id == null)
+            if (Id == null)
             {
                 return NotFound();
             }
 
-            if( !await _userManager.Users.AnyAsync(u => u.Id == Id))
+            if (!await _userManager.Users.AnyAsync(u => u.Id == Id))
             {
                 return NotFound();
             }
 
-            CustomUser oldUser =await _userManager.FindByIdAsync(Id);
+            CustomUser oldUser = await _userManager.FindByIdAsync(Id);
             IdentityUserRole<string> userROle = await _context.UserRoles.FirstOrDefaultAsync(u => u.UserId == Id);
 
             VmuserUpdate willUpdateUser = new VmuserUpdate()
@@ -148,7 +148,7 @@ namespace Ethereal_Onepage_Template_Asp.Net.Areas.admin.Controllers
                 PasswordHash = oldUser.PasswordHash,
             };
 
-            willUpdateUser.role =await _roleManager.Roles.ToListAsync();
+            willUpdateUser.role = await _roleManager.Roles.ToListAsync();
             return View(willUpdateUser);
         }
 
@@ -162,9 +162,9 @@ namespace Ethereal_Onepage_Template_Asp.Net.Areas.admin.Controllers
                 return View(model);
             }
 
-            if(model.ProfileFile != null)
+            if (model.ProfileFile != null)
             {
-                if(model.Profile != null)
+                if (model.Profile != null)
                 {
                     string oldProfile = Path.Combine("wwwroot", "area/admin/img/profile", model.Profile);
 
@@ -184,7 +184,7 @@ namespace Ethereal_Onepage_Template_Asp.Net.Areas.admin.Controllers
                 model.Profile = fileName;
             }
 
-            if(model.RoleId == "0")
+            if (model.RoleId == "0")
             {
                 ModelState.AddModelError("", "Role is required");
                 return View(model);
@@ -247,20 +247,39 @@ namespace Ethereal_Onepage_Template_Asp.Net.Areas.admin.Controllers
         }
 
 
-        //public async Task<IActionResult> DeleteAsync(string Id)
-        //{
-        //    if(Id == null)
-        //    {
-        //        return NotFound();
-        //    }
+        public async Task<IActionResult> DeleteAsync(string Id)
+        {
+            if (Id == null)
+            {
+                return NotFound();
+            }
 
-        //    if(!await _userManager.Users.AnyAsync(u => u.Id == Id))
-        //    {
-        //        return NotFound();
-        //    }
+            if (!await _userManager.Users.AnyAsync(u => u.Id == Id))
+            {
+                return NotFound();
+            }
 
-            
-        //}
+            CustomUser willDeleteUser = await _userManager.FindByIdAsync(Id);
+
+            var result = await _userManager.DeleteAsync(willDeleteUser);
+
+            if (result.Succeeded)
+            {
+                if (willDeleteUser != null)
+                {
+                    string Profile = Path.Combine("wwwroot", "area/admin/img/profile", willDeleteUser.Profile);
+                    if (System.IO.File.Exists(Profile))
+                    {
+                        System.IO.File.Delete(Profile);
+                    }
+                }
+
+                return RedirectToAction(nameof(Index));
+            }
+
+            return NotFound();
+
+        }
 
 
         public IActionResult Login()
