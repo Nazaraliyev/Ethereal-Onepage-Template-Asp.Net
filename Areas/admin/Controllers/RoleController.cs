@@ -18,5 +18,11 @@ namespace Ethereal_Onepage_Template_Asp.Net.Areas.admin.Controllers
         {
             return View(await _roleManager.Roles.ToListAsync());
         }
+
+
+        public IActionResult Create()
+        {
+            return View();
+        }
     }
 }
