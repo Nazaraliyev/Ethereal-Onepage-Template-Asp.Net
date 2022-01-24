@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+@model List<IdentityRole>
+
+
+    
+
+<div class="container-fluid">
+	<h2 class = "mb-3">Role</h2>
+	<a asp-area = "admin" asp-controller = "role" asp-action = "create" class = "btn btn-primary mb-2">Create New Role</a>
+	<table class="table table-striped w-50">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Name</th>
+				<th scope="col">Modify</th>
+			</tr>
+		</thead>
+		<tbody>
+			@{
+				int i = 1;
+				foreach (var role in Model)
+				{
+					<tr>
+						<th scope="row">@i</th>
+						<td>@role.Name</td>
+						<td>
+							<a asp-area = "admin" asp-controller = "account" asp-action = "update" asp-route-id = "@role.Id" class = "btn btn-warning">Update</a>
+							<a asp-area = "admin" asp-controller = "account" asp-action = "delete" asp-route-id = "@role.Id" class = "btn btn-warning" onclick = "return confirm('Are you Sure ?')">Delete</a>
+						</td>
+					</tr>
+					i++;
+				}
+			}
+		</tbody>
+	</table>
+</div>
