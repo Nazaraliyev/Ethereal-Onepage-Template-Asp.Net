@@ -36,9 +36,22 @@
 		<div class="mb-3">
 			<label asp-for="@Model.Phone" class="form-label">Role</label>
 			<select class="form-selectab-content form-control" asp-for="@Model.RoleId" asp-items="@(new SelectList(Model.role, "Id", "Name"))">
-				<option selected disable value = "0">Open this select menu</option>
+				<option selected disable value="0">Open this select menu</option>
 			</select>
 		</div>
+
+		<div class="mb-3">
+			<label asp-for="@Model.Password" class="form-label">Password</label>
+			<input type="password" class="form-control" asp-for="@Model.Password">
+		</div>
+
+
+		<div class="mb-3">
+			<label asp-for="@Model.CoPassword" class="form-label">Confirm Password</label>
+			<input type="password" class="form-control" asp-for="@Model.CoPassword">
+		</div>
+
+
 
 
 		<button class="btn btn-primary" type="submit">Create</button> <a asp-area="admin" asp-controller="account" asp-action="index" class="ml-3 text-danger">Go Back</a>

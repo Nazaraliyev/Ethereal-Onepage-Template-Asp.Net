@@ -5,9 +5,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Ethereal_Onepage_Template_Asp.Net.ViewModel
 {
-    public class VmUserRegister
+    public class VmuserUpdate
     {
-
         [MaxLength(50), Required, MinLength(5)]
         public string Name { get; set; }
 
@@ -27,10 +26,9 @@ namespace Ethereal_Onepage_Template_Asp.Net.ViewModel
         public string Phone { get; set; }
 
 
-
         public IFormFile ProfileFile { get; set; }
-        public string Profile {get; set;}
 
+        public string Profile { get; set; }
 
 
         public List<IdentityRole> role { get; set; }
@@ -41,11 +39,11 @@ namespace Ethereal_Onepage_Template_Asp.Net.ViewModel
 
 
 
-        [MaxLength(100), Required, MinLength(5)]
-        public string Password { get; set; }
 
-
-        [MaxLength(100), Required, MinLength(5), Compare("Password"), Display(Name = "Confirm Password")]
-        public string CoPassword { get; set; }
+        public string Id { get; set; }
+        public string Secure { get; set; }
+        public string Concurency { get; set; }
+        public string PasswordHash { get; set; }
     }
+
 }

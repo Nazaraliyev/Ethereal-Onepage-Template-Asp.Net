@@ -99,7 +99,7 @@ namespace Ethereal_Onepage_Template_Asp.Net.Areas.admin.Controllers
                 Profile = model.Profile
             };
 
-            var result  = await _userManager.CreateAsync(user);
+            var result  = await _userManager.CreateAsync(user, model.Password);
             if (!result.Succeeded)
             {
                 return View(model);
@@ -134,7 +134,7 @@ namespace Ethereal_Onepage_Template_Asp.Net.Areas.admin.Controllers
             CustomUser oldUser =await _userManager.FindByIdAsync(Id);
             IdentityUserRole<string> userROle = await _context.UserRoles.FirstOrDefaultAsync(u => u.UserId == Id);
 
-            VmUserRegister willUpdateUser = new VmUserRegister()
+            VmuserUpdate willUpdateUser = new VmuserUpdate()
             {
                 Id = oldUser.Id,
                 Name = oldUser.Name,
@@ -143,13 +143,124 @@ namespace Ethereal_Onepage_Template_Asp.Net.Areas.admin.Controllers
                 Phone = oldUser.PhoneNumber,
                 RoleId = userROle.RoleId,
                 Secure = oldUser.SecurityStamp,
-                Concurency = oldUser.ConcurrencyStamp
+                Concurency = oldUser.ConcurrencyStamp,
+                Profile = oldUser.Profile,
+                PasswordHash = oldUser.PasswordHash,
             };
 
             willUpdateUser.role =await _roleManager.Roles.ToListAsync();
             return View(willUpdateUser);
         }
 
+
+        [HttpPost]
+        public async Task<IActionResult> Update(VmuserUpdate model)
+        {
+            model.role = await _roleManager.Roles.ToListAsync();
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            if(model.ProfileFile != null)
+            {
+                if(model.Profile != null)
+                {
+                    string oldProfile = Path.Combine("wwwroot", "area/admin/img/profile", model.Profile);
+
+                    if (System.IO.File.Exists(oldProfile))
+                    {
+                        System.IO.File.Delete(oldProfile);
+                    }
+                }
+
+                string fileName = Guid.NewGuid() + "-" + model.ProfileFile.FileName;
+                string filePath = Path.Combine("wwwroot", "area/admin/img/profile", fileName);
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    model.ProfileFile.CopyTo(stream);
+                }
+
+                model.Profile = fileName;
+            }
+
+            if(model.RoleId == "0")
+            {
+                ModelState.AddModelError("", "Role is required");
+                return View(model);
+            }
+
+
+            //CustomUser user = new CustomUser()
+            //{
+            //    Id = model.Id,
+            //    Name = model.Name,
+            //    Surname = model.Surname,
+            //    Email = model.Email,
+            //    PhoneNumber = model.Phone,
+            //    UserName = model.Email,
+            //    SecurityStamp = model.Secure,
+            //    ConcurrencyStamp = model.Concurency,
+            //    Profile = model.Profile,
+            //    PasswordHash = model.PasswordHash,
+            //    NormalizedEmail = model.Email.ToUpper(),
+            //    NormalizedUserName = model.Email.ToUpper(),
+            //};
+
+            //var result = await _userManager.UpdateAsync(user);
+            //if (!result.Succeeded)
+            //{
+            //    return View(model);
+            //}
+
+
+
+            CustomUser user = await _userManager.FindByIdAsync(model.Id);
+            user.Name = model.Name;
+            user.Surname = model.Surname;
+            user.Email = model.Email;
+            user.NormalizedEmail = model.Email.ToUpper();
+            user.UserName = model.Email;
+            user.NormalizedUserName = model.Email.ToUpper();
+            user.PhoneNumber = model.Phone;
+            user.Profile = model.Profile;
+
+            //_context.UserRoles.Remove(await _context.UserRoles.FirstOrDefaultAsync(ur => ur.UserId == model.Id));
+            await _context.SaveChangesAsync();
+
+            IdentityUserRole<string> userRole = new IdentityUserRole<string>()
+            {
+                UserId = model.Id,
+                RoleId = model.RoleId,
+            };
+
+            //_context.UserRoles.Update(userRole);
+
+
+            _context.UserRoles.Remove(await _context.UserRoles.FirstOrDefaultAsync(ur => ur.UserId == model.Id));
+            await _context.UserRoles.AddAsync(userRole);
+
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+
+        //public async Task<IActionResult> DeleteAsync(string Id)
+        //{
+        //    if(Id == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    if(!await _userManager.Users.AnyAsync(u => u.Id == Id))
+        //    {
+        //        return NotFound();
+        //    }
+
+            
+        //}
 
 
         public IActionResult Login()
